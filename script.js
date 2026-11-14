@@ -22,7 +22,7 @@ function renderProducts(){
     <article class="product-card" style="animation-delay:${index*80}ms">
       <div class="product-image"><img src="${product.image}" alt="${product.name}" loading="lazy"><span class="product-tag">${product.tag}</span></div>
       <div class="product-info"><h3>${product.name}</h3><p>${product.description}</p>
-        <div class="product-bottom"><span class="product-price">${formatPrice(product.price)}</span><button class="add-button" data-add="${product.id}" aria-label="Ajouter ${product.name} au panier">+</button></div>
+        <div class="product-bottom"><span class="product-price">${formatPrice(product.price)}</span><button class="add-button" data-add="${product.id}" aria-label="Ajouter ${product.name} au panier"><svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg></button></div>
       </div>
     </article>`).join("") : `<p class="no-results">Aucune douceur ne correspond à votre recherche.</p>`;
 }
@@ -31,7 +31,7 @@ function saveCart(){ localStorage.setItem("douceurKatyCart",JSON.stringify(cart)
 function addToCart(id){
   const item=cart.find(entry=>entry.id===id);
   if(item)item.quantity++; else cart.push({id,quantity:1});
-  saveCart(); showToast("Une douceur a été ajoutée à votre panier ♡");
+  saveCart(); showToast("Une douceur a été ajoutée à votre panier.");
 }
 function changeQuantity(id,delta){
   const item=cart.find(entry=>entry.id===id); if(!item)return;
@@ -43,9 +43,9 @@ function renderCart(){
   const total=cart.reduce((sum,item)=>{const product=products.find(p=>p.id===item.id);return sum+(product?product.price*item.quantity:0)},0);
   $("#cartCount").textContent=count; $("#drawerCount").textContent=`(${count})`; $("#cartTotal").textContent=formatPrice(total);
   $("#checkoutButton").disabled=count===0;
-  $("#cartItems").innerHTML=count===0?`<div class="empty-cart"><span>♡</span><b>Votre panier est encore vide</b><p>Ajoutez une petite douceur pour commencer.</p></div>`:cart.map(item=>{
+  $("#cartItems").innerHTML=count===0?`<div class="empty-cart"><svg class="icon icon-heart" aria-hidden="true"><use href="#icon-heart"></use></svg><b>Votre panier est encore vide</b><p>Ajoutez une petite douceur pour commencer.</p></div>`:cart.map(item=>{
     const p=products.find(product=>product.id===item.id); if(!p)return "";
-    return `<div class="cart-row"><img src="${p.image}" alt=""><div><h4>${p.name}</h4><small>${formatPrice(p.price)}</small><div class="qty-control"><button data-qty="${p.id}" data-delta="-1" aria-label="Retirer une unité">−</button><span>${item.quantity}</span><button data-qty="${p.id}" data-delta="1" aria-label="Ajouter une unité">+</button></div></div><button class="remove-item" data-remove="${p.id}" aria-label="Supprimer ${p.name}">×</button></div>`;
+    return `<div class="cart-row"><img src="${p.image}" alt=""><div><h4>${p.name}</h4><small>${formatPrice(p.price)}</small><div class="qty-control"><button data-qty="${p.id}" data-delta="-1" aria-label="Retirer une unité"><svg class="icon" aria-hidden="true"><use href="#icon-minus"></use></svg></button><span>${item.quantity}</span><button data-qty="${p.id}" data-delta="1" aria-label="Ajouter une unité"><svg class="icon" aria-hidden="true"><use href="#icon-plus"></use></svg></button></div></div><button class="remove-item" data-remove="${p.id}" aria-label="Supprimer ${p.name}"><svg class="icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div>`;
   }).join("");
 }
 function openCart(){ $("#cartDrawer").classList.add("open");$("#cartOverlay").classList.add("show");$("#cartDrawer").setAttribute("aria-hidden","false");document.body.style.overflow="hidden"; }
@@ -81,21 +81,21 @@ function buildOrderMessage(formData){
   const fulfillment = formData.get("fulfillment") || "Non précisé";
   const details = (formData.get("details") || "").trim();
   return [
-    "Bonjour Katy 🌸",
+    "Bonjour Katy,",
     "Je souhaite passer une commande chez Douceur de Katy.",
     "",
-    "🧁 MA SÉLECTION",
+    "MA SÉLECTION",
     ...selectedItems,
     "",
-    `💰 TOTAL : ${formatPrice(total)}`,
+    `TOTAL : ${formatPrice(total)}`,
     "",
-    "👤 INFORMATIONS DU CLIENT",
+    "INFORMATIONS DU CLIENT",
     `Nom et prénom : ${name}`,
     `Téléphone : ${phone}`,
     `Mode de réception : ${fulfillment}`,
     `Adresse / précision : ${details || (fulfillment === "Livraison" ? "À préciser" : "Retrait sur place")}`,
     "",
-    "Merci de me confirmer la disponibilité et les modalités. 😊"
+    "Merci de me confirmer la disponibilité et les modalités."
   ].join("\n");
 }
 
