@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Douceur de Katy — pâtisseries préparées avec amour. Découvrez nos douceurs et passez commande directement sur notre site.">
+  <meta name="theme-color" content="#fff8f5">
+  <title>Douceur de Katy | Des douceurs préparées avec amour</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="announcement">Une petite douceur pour illuminer votre journée <span>♡</span></div>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Douceur de Katy, accueil">
+      <span class="brand-mark">DK</span>
+      <span class="brand-name">Douceur <em>de Katy</em><small>FAIT AVEC AMOUR</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#top">Accueil</a><a href="#boutique">Nos douceurs</a><a href="#histoire">Notre histoire</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-button" id="openCart" aria-label="Ouvrir le panier">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 1.9-1.4L22 8H6"/><circle cx="10" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/></svg>
+      <span>Panier</span><b id="cartCount">0</b>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span></span> LE BONHEUR SE PARTAGE</p>
+        <h1>Un peu de douceur,<br><em>beaucoup d’amour.</em></h1>
+        <p class="hero-text">Des pâtisseries gourmandes, préparées avec soin pour transformer vos petits moments en grands souvenirs.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#boutique">Découvrir nos douceurs <span>↗</span></a><a class="text-link" href="#histoire">Notre univers <span>→</span></a></div>
+        <div class="hero-note"><span class="note-stars">★★★★★</span><span>Du fait maison, avec le cœur.</span></div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="hero-photo"></div>
+        <div class="photo-sticker"><span>♡</span><small>Une touche<br>de bonheur</small></div>
+        <div class="hero-caption"><span>LES PETITS PLAISIRS</span><b>qui font les beaux jours.</b></div>
+      </div>
+      <div class="hero-decoration decor-one">✳</div><div class="hero-decoration decor-two">✿</div>
+    </section>
+
+    <section class="benefits" aria-label="Nos engagements">
+      <div><span class="benefit-icon">♡</span><p><b>Préparé avec amour</b><small>Chaque douceur compte</small></p></div>
+      <div><span class="benefit-icon">✧</span><p><b>Fraîcheur & qualité</b><small>Le plaisir à chaque bouchée</small></p></div>
+      <div><span class="benefit-icon">⌁</span><p><b>Commande facile</b><small>En quelques clics sur le site</small></p></div>
+    </section>
+
+    <section class="shop-section section-pad" id="boutique">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow"><span></span> NOTRE SÉLECTION</p><h2>Nos petites <em>merveilles</em></h2></div>
+        <p>Une sélection de douceurs pour toutes vos envies. Choisissez vos préférées et laissez-vous tenter.</p>
+      </div>
+      <div class="shop-tools reveal">
+        <div class="filters" id="filters"><button class="filter active" data-filter="Tous">Tout voir</button><button class="filter" data-filter="Gâteaux">Gâteaux</button><button class="filter" data-filter="Individuels">Petites douceurs</button></div>
+        <label class="search-box"><span>⌕</span><input type="search" id="productSearch" placeholder="Rechercher une douceur…" aria-label="Rechercher un produit"></label>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <p class="catalog-note">Envie d'une création personnalisée ? <a href="#contact">Parlons-en ensemble.</a></p>
+    </section>
+
+    <section class="story-section" id="histoire">
+      <div class="story-image reveal"><div class="story-image-inner"></div><span class="story-seal">FAIT<br>AVEC<br>♡</span></div>
+      <div class="story-copy reveal"><p class="eyebrow"><span></span> UN UNIVERS GOURMAND</p><h2>La douceur est<br>dans les <em>détails.</em></h2><p>Chez Douceur de Katy, chaque pâtisserie est une invitation à ralentir, à savourer et à partager. Nous croyons que les plus beaux souvenirs commencent parfois par une simple gourmandise.</p><p>Pour un anniversaire, une fête ou juste pour se faire plaisir, trouvons ensemble la douceur qu’il vous faut.</p><a href="#contact" class="btn btn-outline">Faire une demande <span>↗</span></a></div>
+    </section>
+
+    <section class="quote-band"><span>“</span><p>Le bonheur a parfois le goût d’une pâtisserie.</p><span>♡</span></section>
+
+    <section class="contact-section section-pad" id="contact">
+      <div class="contact-card reveal">
+        <div><p class="eyebrow"><span></span> RESTONS EN CONTACT</p><h2>Une envie sucrée ?<br><em>Écrivons la suite.</em></h2><p>Une question, une commande spéciale ou une occasion à célébrer ? Katy sera ravie d’échanger avec vous.</p><p class="contact-whatsapp">WhatsApp : <a href="https://wa.me/2250595509350" target="_blank" rel="noopener noreferrer">+225 05 95 50 93 50</a></p></div>
+        <a class="btn btn-primary" href="https://wa.me/2250595509350" target="_blank" rel="noopener noreferrer">Écrire à Katy <span>↗</span></a>
+        <div class="contact-flower">✿</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer">
+    <a class="brand footer-brand" href="#top"><span class="brand-mark">DK</span><span class="brand-name">Douceur <em>de Katy</em><small>FAIT AVEC AMOUR</small></span></a>
+    <p>Des douceurs préparées avec amour. <span>♡</span></p>
+    <div class="footer-bottom"><span>© <span id="year"></span> Douceur de Katy. Tous droits réservés.</span><a href="#top">Retour en haut ↑</a></div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Votre panier" aria-hidden="true">
+    <div class="cart-head"><div><p class="eyebrow">VOTRE SÉLECTION</p><h3>Mon panier <span id="drawerCount">(0)</span></h3></div><button class="icon-button" id="closeCart" aria-label="Fermer le panier">×</button></div>
+    <div class="cart-items" id="cartItems"><div class="empty-cart"><span>♡</span><b>Votre panier est encore vide</b><p>Ajoutez une petite douceur pour commencer.</p></div></div>
+    <div class="cart-foot"><div class="total-line"><span>Total estimé</span><strong id="cartTotal">0 FCFA</strong></div><p>Le paiement se fera à la livraison ou au retrait.</p><button class="btn btn-primary checkout-button" id="checkoutButton">Finaliser ma commande <span>↗</span></button></div>
+  </aside>
+
+  <div class="checkout-modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <form class="checkout-form" id="checkoutForm">
+      <button type="button" class="icon-button modal-close" id="closeModal" aria-label="Fermer">×</button>
+      <p class="eyebrow"><span></span> DERNIÈRE ÉTAPE</p><h3>Vos coordonnées</h3><p class="modal-intro">Vérifiez votre sélection, renseignez vos informations, puis envoyez le récapitulatif directement à Katy sur WhatsApp.</p>
+      <label>Nom et prénom<input name="name" required autocomplete="name" placeholder="Votre nom complet"></label>
+      <label>Votre numéro de téléphone<input name="phone" required type="tel" autocomplete="tel" placeholder="Ex. 07 00 00 00 00"></label>
+      <label>Mode de réception<select name="fulfillment" id="fulfillment" required><option value="Livraison">Livraison</option><option value="Retrait sur place">Retrait sur place</option></select></label>
+      <label id="detailsLabel">Adresse de livraison <span class="field-note">(obligatoire pour la livraison)</span><textarea name="details" id="customerDetails" rows="2" required placeholder="Commune, quartier, rue et repère"></textarea></label>
+      <button class="btn btn-primary modal-submit" type="submit">Continuer sur WhatsApp <span>↗</span></button>
+      <small class="privacy-note">Le message récapitulatif contiendra les gâteaux choisis, leurs prix, leurs photos et vos coordonnées. Le paiement se fera à la livraison ou au retrait.</small>
+    </form>
+  </div>
+  <div class="music-control">
+    <audio id="siteMusic" autoplay loop preload="auto"><source src="musique-douceur.mp3" type="audio/mpeg"></audio>
+    <button type="button" id="musicToggle" aria-pressed="false" aria-label="Activer la musique du site"><span class="music-icon">♫</span><span id="musicLabel">Écouter la musique</span></button>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
