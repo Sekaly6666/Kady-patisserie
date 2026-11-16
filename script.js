@@ -1,9 +1,9 @@
 /* DOUCEUR DE KATY — commandes préparées et envoyées par WhatsApp. */
 
 const products = [
-  {id:1,name:"Cupcake Vanille",category:"Individuels",price:1000,description:"Un cupcake moelleux à la vanille, tout simplement irrésistible.",tag:"DOUCEUR DU JOUR",image:"https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=800&q=85"},
-  {id:2,name:"Gâteau au chocolat",category:"Gâteaux",price:5000,description:"Un gâteau généreux et fondant pour les amoureux du chocolat.",tag:"GOURMAND",image:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=85"},
-  {id:3,name:"Tarte aux fraises",category:"Gâteaux",price:3000,description:"Une tarte fruitée et délicate, parfaite pour une pause fraîcheur.",tag:"FRUITÉ",image:"https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=85"}
+  {id:1,slug:"cupcake-vanille",name:"Cupcake Vanille",category:"Individuels",price:1000,description:"Un cupcake moelleux à la vanille, tout simplement irrésistible.",tag:"DOUCEUR DU JOUR",image:"https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=800&q=85"},
+  {id:2,slug:"gateau-au-chocolat",name:"Gâteau au chocolat",category:"Gâteaux",price:5000,description:"Un gâteau généreux et fondant pour les amoureux du chocolat.",tag:"GOURMAND",image:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=85"},
+  {id:3,slug:"tarte-aux-fraises",name:"Tarte aux fraises",category:"Gâteaux",price:3000,description:"Une tarte fruitée et délicate, parfaite pour une pause fraîcheur.",tag:"FRUITÉ",image:"https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=85"}
 ];
 
 let cart = JSON.parse(localStorage.getItem("douceurKatyCart") || "[]");
@@ -58,6 +58,13 @@ function openCheckout(){
 function closeCheckout(){ $("#checkoutModal").classList.remove("open");$("#checkoutModal").setAttribute("aria-hidden","true");document.body.style.overflow=""; }
 const WHATSAPP_NUMBER = "2250595509350"; // +225 05 95 50 93 50
 
+function getProductPreviewUrl(product){
+  const origin = (typeof window !== "undefined" && window.location.origin && window.location.origin.startsWith("http") && !window.location.origin.includes("localhost") && !window.location.origin.includes("127.0.0.1"))
+    ? window.location.origin
+    : "https://kady-patisserie.vercel.app";
+  return `${origin}/produits/${product.slug}.html`;
+}
+
 function buildOrderMessage(formData){
   const selectedItems = cart.map(item => {
     const p = products.find(product => product.id === item.id);
@@ -69,7 +76,7 @@ function buildOrderMessage(formData){
       `  Quantité : ${item.quantity}`,
       `  Prix unitaire : ${formatPrice(p.price)}`,
       `  Sous-total : ${formatPrice(subtotal)}`,
-      `  Photo du gâteau : ${p.image}`
+      `  Photo du gâteau : ${getProductPreviewUrl(p)}`
     ].join("\n");
   }).filter(Boolean);
   const total = cart.reduce((sum,item)=>{
@@ -115,11 +122,10 @@ $("#checkoutForm").addEventListener("submit",e=>{
   const form=e.currentTarget;
   const message=buildOrderMessage(new FormData(form));
   const whatsappUrl=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-  // Cette ouverture est directement déclenchée par le formulaire soumis par le visiteur.
   const whatsappWindow=window.open(whatsappUrl,"_blank");
   if(!whatsappWindow){window.location.href=whatsappUrl;return;}
   closeCheckout();
-  showToast("Message préparé ! Appuyez sur Envoyer dans WhatsApp pour transmettre la commande.");
+  showToast("Ouverture de WhatsApp avec votre commande...");
 });
 
 function updateAddressRequirement(){

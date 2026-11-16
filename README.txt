@@ -20,10 +20,10 @@ NUMÉRO WHATSAPP DE KATY
 Le lien WhatsApp utilise le numéro international 2250595509350.
 
 À SAVOIR SUR LES PHOTOS
-Le site ajoute un lien cliquable vers la photo de chaque produit dans le message WhatsApp.
-Un lien wa.me ne peut pas joindre automatiquement la photo comme pièce jointe : Katy peut
-ouvrir les liens pour voir les gâteaux sélectionnés. Les photos du catalogue sont hébergées
-sur Unsplash et nécessitent une connexion Internet.
+Sur mobile, le site utilise l'API de partage pour attacher directement la vraie image du gâteau
+commandé avec les détails en légende vers WhatsApp.
+Sur ordinateur ou navigateurs sans partage de fichier, le site utilise le lien classique wa.me
+avec les liens cliquables vers les photos.
 
 MUSIQUE
 La musique originale est une petite ambiance instrumentale piano doux avec une légère couleur
